@@ -1,0 +1,23 @@
+body {
+	background-color: #fafafa;
+	font-family: "Nunito";
+	padding-top: 50px;
+}
+
+.container {
+	max-width: 550px;
+	margin: auto;
+	background-color: white;
+}
+.header-bar {
+	display: flex;
+	justify-content: space-between;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px 5px 0 0;
+	background: linear-gradient(90deg, #eea390, #eb796f, #eb796f 100%);
+}
+.logout {
+	color: #fff;
+	text-decoration: none;
+}
