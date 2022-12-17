@@ -1,8 +1,27 @@
 {% extends "core/main.html" %}
 {% block content %}
-<form action="" method="post" autocomplete="off">
-  {% csrf_token %} {{ form.as_p }}
-  <button>Sign-Up</button>
-</form>
-<a href="{% url 'login' %}">Login</a>
+<div class="header-bar">
+	<h1>Register</h1>
+</div>
+<div class="card-wrapper">
+	<div class="card-body">
+		<form action="" method="post" autocomplete="off">
+
+			{% csrf_token %}
+			{% for field in form %}
+			<label for="{{field.auto_id}}">{{field.label_tag|striptags}}</label>
+			{{field}}
+			<p>{{field.errors|striptags}}</p>
+			{% endfor %}
+			<button class="button">Sign-Up</button>
+			<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+
+
+		</form>
+
+
+	</div>
+</div>
+
 {% endblock content %}

@@ -1,10 +1,17 @@
 {% extends "core/main.html" %}
 {% block content %}
+<div class="header-bar">
+	<h1>Login</h1>
+</div>
+<div class="card-body form-center">
+	<form action="" method="post" novalidate>
+		{% csrf_token %}{{form.as_p}}
+		<button class="button">Login</button>
+	</form>
+	<div class="footer">
+		<p>Don't have an account? <a href="{% url "signup" %}">Register</a></p>
+	</div>
+</div>
 
-<form action="" method="post">
-	{% csrf_token %}{{form.as_p}}
-	<button>Login</button>
-</form>
-<p>Don't have an account?</p><a href="{% url "signup" %}">Register</a>
 
 {% endblock content %}
