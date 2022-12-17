@@ -38,7 +38,9 @@
 			{% else %}
 			<div class="task-title">
 				<div class="task-incomplte-icon">
-					<a href="{% url 'task-update' task.id %}">{{task}}</a>
+					<a class="update_task" href="{% url 'task-update' task.id %}">
+						{{task.title}}
+					</a>
 				</div>
 			</div>
 			<a class="delete" href="{% url 'task-delete' task.id %}">&#215;</a>
@@ -48,7 +50,7 @@
 		</div>
 
 		{% empty %}
-		<h3>No items in list</h3>
+		<h3 style="margin-left:1rem;">No items in list</h3>
 		{% endfor %}
 	</div>
 

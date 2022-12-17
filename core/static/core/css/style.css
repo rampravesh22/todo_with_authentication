@@ -76,7 +76,9 @@ body {
 	align-items: center;
 	padding: 10px;
 }
-
+.update_task:hover {
+	color: #cf4949;
+}
 #add-link {
 	color: #eb796f;
 	font-size: 42px;
@@ -116,6 +118,7 @@ a {
 	position: relative;
 	width: 80%;
 	margin: auto;
+	padding-bottom: 2rem;
 }
 .form-center form {
 	width: 100%;

@@ -3,6 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from core.models import Task
 from django.shortcuts import redirect
+from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 # Create your views here.
@@ -63,8 +64,17 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
+        # it is to make sure that the user is logged in user
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_form(self):
+        form = super().get_form()
+        form.fields['title'].widget = forms.TextInput(
+            attrs={"required": True})
+        form.fields['description'].widget = forms.Textarea(
+            attrs={"required": True})
+        return form
 
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
@@ -73,6 +83,10 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
 
     success_url = reverse_lazy("tasks")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
